@@ -1,0 +1,150 @@
+
+// Fonts (Inter)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Variables Override
+$font-family-base: 'Inter', sans-serif;
+$primary: #20c997; // Teal-ish
+$secondary: #8392ab;
+$success: #82d616;
+$info: #17c1e8;
+$warning: #fbcf33;
+$danger: #ea0606;
+$light: #f8f9fa;
+$dark: #344767;
+
+$border-radius: 1rem;
+$border-radius-lg: 1.5rem;
+$border-radius-sm: 0.5rem;
+
+$box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$box-shadow-lg: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+$body-bg: #f8f9fa;
+$card-border-width: 0;
+$card-cap-bg: #fff;
+$card-box-shadow: $box-shadow-lg;
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+// Custom Styles
+body {
+  background-color: $body-bg;
+  color: #67748e;
+}
+
+.navbar-vertical {
+  box-shadow: $box-shadow-lg;
+  border-radius: $border-radius-lg;
+  background: #fff;
+  margin: 1rem;
+  height: calc(100vh - 2rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  width: 250px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  
+  @include media-breakpoint-down(lg) {
+    transform: translateX(-100%);
+    &.show {
+        transform: translateX(0);
+    }
+  }
+}
+
+.main-content {
+  margin-left: 270px; // 250px width + 20px gap
+  padding: 1rem;
+  transition: all 0.3s ease;
+  
+  @include media-breakpoint-down(lg) {
+    margin-left: 0;
+  }
+}
+
+.card-stats {
+  .icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius;
+    background: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+    color: white;
+    font-size: 1.5rem;
+  }
+}
+
+.avatar-md {
+    width: 48px;
+    height: 48px;
+}
+
+// Sidebar Icon Only Mode (if needed, but using text for now)
+.nav-link {
+    color: $secondary;
+    font-weight: 500;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+    margin: 0 0.5rem;
+    transition: all 0.2s;
+
+    &:hover, &.active {
+        background-color: #fff;
+        box-shadow: $box-shadow;
+        color: $dark;
+        
+        .icon {
+            background-color: $primary;
+            color: #fff !important; 
+        }
+    }
+    
+    .icon-shape {
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        box-shadow: $box-shadow-sm;
+        border-radius: $border-radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.8rem;
+        color: $dark;
+        transition: all 0.2s;
+    }
+}
+
+/* Glassmorphism utils */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Toggle */
+.navbar-toggler-custom {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1040;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    border: none;
+    display: none; // hidden on desktop
+    @include media-breakpoint-down(lg) {
+        display: block;
+    }
+}
