@@ -1,0 +1,157 @@
+// Fonts (Inter)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Variables Override
+$font-family-base: 'Inter', sans-serif;
+$primary: #20c997; // Teal-ish matching the image
+$secondary: #8392ab;
+$success: #82d616;
+$info: #17c1e8;
+$warning: #fbcf33;
+$danger: #ea0606;
+$light: #f8f9fa;
+$dark: #344767;
+
+$border-radius: 1rem;
+$border-radius-lg: 1.5rem;
+$border-radius-sm: 0.5rem;
+
+$box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$box-shadow-lg: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+$body-bg: #f8f9fa;
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+// Custom Styles
+body {
+    background-color: $body-bg;
+    color: #67748e;
+}
+
+// App-like Header Background
+.app-header-bg {
+    background-color: #00796b !important;
+    /* Darker Teal/Green */
+    height: 300px;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 0; // Curve on one side or both? Image implies soft curve
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    z-index: 0;
+}
+
+.navbar-vertical {
+    box-shadow: $box-shadow-lg;
+    border-radius: $border-radius-lg;
+    background: #fff;
+    margin: 1rem;
+    height: calc(100vh - 2rem);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    width: 250px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+
+    @include media-breakpoint-down(lg) {
+        transform: translateX(-100%);
+
+        &.show {
+            transform: translateX(0);
+        }
+    }
+}
+
+.main-content {
+    margin-left: 270px; // 250px width + 20px gap
+    padding: 1rem;
+    transition: all 0.3s ease;
+
+    @include media-breakpoint-down(lg) {
+        margin-left: 0;
+        padding: 0; // Reduce padding on mobile to let header touch edges
+    }
+}
+
+// Ensure content sits on top of the green bg
+.container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+// Navbar text color adjustment for green bg
+#navbarBlur {
+
+    .breadcrumb-item,
+    .nav-link,
+    .font-weight-bolder {
+        color: white !important;
+    }
+
+    .text-dark {
+        color: white !important;
+    }
+}
+
+// Card Stats override to match "floating" feel
+.card {
+    border: none;
+    box-shadow: $box-shadow-lg;
+}
+
+.card-stats {
+    .icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $border-radius;
+        background: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+/* Glassmorphism utils */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Toggle */
+.navbar-toggler-custom {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1040;
+    background: white;
+    /* Green background? Or Keep white circle? Keep white for visibility */
+    color: #00796b;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    border: none;
+    width: 45px;
+    /* Fixed size */
+    height: 45px;
+    display: flex;
+    /* Centering */
+    align-items: center;
+    justify-content: center;
+
+    display: none; // hidden on desktop
+
+    @include media-breakpoint-down(lg) {
+        display: flex;
+        top: 25px;
+        /* Adjust for padding */
+        left: 20px;
+    }
+}
